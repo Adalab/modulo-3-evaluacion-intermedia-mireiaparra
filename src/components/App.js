@@ -13,9 +13,11 @@ function App() {
   })
 
   const [search, setSearch] = useState("");
+  const [searchCounselor, setSearchCounselor] = useState("");
 
   const htmlData = adalabers
-  .filter((adalaber) => adalaber.name.toLowerCase().includes((search.toLowerCase())))
+  .filter((adalaber) => adalaber.name.toLowerCase().includes(search.toLowerCase()))
+  .filter((adalaber) => adalaber.counselor.includes(searchCounselor))
   .map((adalaber) => {
     return (<tr><td>{adalaber.name}</td><td>{adalaber.counselor}</td><td>{adalaber.speciality}</td></tr>)
   }
@@ -36,7 +38,11 @@ const handleClickAdd = (ev) => {
 }
 
 const handleSearch=(ev) => {
-  setSearch(ev.target.value)
+  setSearch(ev.target.value);
+}
+
+const handleSearchCounselor=(ev) => {
+  setSearchCounselor(ev.target.value);
 }
   useEffect(() => {
     fetchAdalabers().then((data) => {
@@ -53,6 +59,12 @@ const handleSearch=(ev) => {
           <form>
             <label htmlFor="searchName">Nombre: </label>
             <input type="search" name="searchName" id="searchName" placeholder="Ej: MariCarmen" value={search} onInput={handleSearch}/>
+            <select onChange={handleSearchCounselor}>
+              <option value="">Cualquiera</option>
+              <option>Yanelis</option>
+              <option>Dayana</option>
+              <option>Iván</option>
+            </select>
           </form>
           <table className="table">
           <thead><tr>
