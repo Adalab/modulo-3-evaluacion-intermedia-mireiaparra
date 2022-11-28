@@ -1,13 +1,19 @@
-import adalabers from "../data/adalabers.json"
+import { useState } from 'react';
 import '../styles/core/reset.scss';
 import '../styles/App.scss';
-
-function App() {
-  const [data, setData] = useState(adalabers);
+import data from "../data/adalabers.json";
   
-  const htmlData = data.map((adalaber) => {
+function App() {
+  const [adalabers, setAdalabers] = useState(data);
+
+  
+
+  const htmlData = adalabers.results
+  .map((adalaber) => {
     return (<tr><td>{adalaber.name}</td><td>{adalaber.counselor}</td><td>{adalaber.speciality}</td></tr>)
-  })
+  }
+  )
+
   return (
     <div className="App">
         <main>
