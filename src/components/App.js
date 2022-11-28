@@ -19,7 +19,7 @@ function App() {
   .filter((adalaber) => adalaber.name.toLowerCase().includes(search.toLowerCase()))
   .filter((adalaber) => adalaber.counselor.includes(searchCounselor))
   .map((adalaber) => {
-    return (<tr key={adalaber.id}><td>{adalaber.name}</td><td>{adalaber.counselor}</td><td>{adalaber.speciality}</td><td>{adalaber.social_networks.map((network) => {
+    return (<tr key={adalaber.id} className="table__tr"><td>{adalaber.name}</td><td>{adalaber.counselor}</td><td>{adalaber.speciality}</td><td>{adalaber.social_networks.map((network) => {
       return <a href={network.url}>{`${network.name} `}</a>
     })}</td></tr>)
   }
@@ -55,40 +55,52 @@ const handleSearchCounselor=(ev) => {
   return (
     <div className="App">
       <header>
-        <h1>Adalabers</h1>
+        <h1 className="title">Adalabers</h1>
       </header>
         <main>
-          <form>
+          <form className="searchForm">
+            <div className="whichName">
             <label htmlFor="searchName">Nombre: </label>
             <input type="search" name="searchName" id="searchName" placeholder="Ej: MariCarmen" value={search} onInput={handleSearch}/>
-            <select onChange={handleSearchCounselor}>
+            </div>
+            <div className="whichCounselor">
+           <label htmlFor="searchCounselor">Escoge una tutora: </label>
+            <select name="searchCounselor" id="searchCounselor" value={searchCounselor} onChange={handleSearchCounselor}>
               <option value="">Cualquiera</option>
               <option>Yanelis</option>
               <option>Dayana</option>
               <option>Iván</option>
             </select>
+            </div>
           </form>
           <table className="table">
-          <thead><tr>
+          <thead>
+          <tr className="table__thead">
            <th>Nombre</th>
            <th>Tutora</th>
            <th>Especialidad</th>
            <th>Redes</th>
           </tr></thead>
-          <tbody>
+          <tbody className="table__tbody">
             {htmlData}
           </tbody>
           </table>
 
-          <h2>Añadir una adalaber</h2>
-          <form>
+          <h2 className="titleAdd">Añadir una adalaber</h2>
+          <form className="addForm">
+            <div>
             <label htmlFor="name">Nombre: </label>
             <input type="text" id="name" name="name" value={newAdalaber.name} onInput={handleNewAdalaber}/>
+            </div>
+            <div>
             <label htmlFor="counselor">Tutora: </label>
             <input type="text" id="counselor" name="counselor" value={newAdalaber.counselor} onInput={handleNewAdalaber}/>
+            </div>
+            <div>
             <label htmlFor="speciality">Especialidad: </label>
             <input type="text" id="speciality" name="nspecialityame" value={newAdalaber.speciality} onInput={handleNewAdalaber}/>
-            <input type="submit" value="Añadir una nueva Adalaber" onClick={handleClickAdd}/>
+            </div>
+            <input className="addButton" type="submit" value="Añadir una nueva Adalaber" onClick={handleClickAdd}/>
           </form>
         </main>
       </div>
