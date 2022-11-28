@@ -9,7 +9,8 @@ function App() {
   const [newAdalaber, setNewAdalaber] = useState({
     name: "",
     counselor: "",
-    speciality: ""
+    speciality: "",
+    social_networks: [],
   })
 
   const [search, setSearch] = useState("");
@@ -35,7 +36,8 @@ const handleClickAdd = (ev) => {
   setNewAdalaber({
     name: "",
     counselor: "",
-    speciality: ""
+    speciality: "",
+    social_networks: [],
   })
 }
 
