@@ -19,7 +19,9 @@ function App() {
   .filter((adalaber) => adalaber.name.toLowerCase().includes(search.toLowerCase()))
   .filter((adalaber) => adalaber.counselor.includes(searchCounselor))
   .map((adalaber) => {
-    return (<tr><td>{adalaber.name}</td><td>{adalaber.counselor}</td><td>{adalaber.speciality}</td></tr>)
+    return (<tr key={adalaber.id}><td>{adalaber.name}</td><td>{adalaber.counselor}</td><td>{adalaber.speciality}</td><td>{adalaber.social_networks.map((network) => {
+      return <a href={network.url}>{`${network.name} `}</a>
+    })}</td></tr>)
   }
   )
 
@@ -71,6 +73,7 @@ const handleSearchCounselor=(ev) => {
            <th>Nombre</th>
            <th>Tutora</th>
            <th>Especialidad</th>
+           <th>Redes</th>
           </tr></thead>
           <tbody>
             {htmlData}
