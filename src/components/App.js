@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../styles/core/reset.scss';
 import '../styles/App.scss';
-// import data from "../data/adalabers.json";
 import fetchAdalabers from "../services/api";
   
 function App() {
